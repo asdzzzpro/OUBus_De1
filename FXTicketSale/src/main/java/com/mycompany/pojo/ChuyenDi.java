@@ -4,7 +4,7 @@
  */
 package com.mycompany.pojo;
 
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
 
 /**
  *
@@ -14,17 +14,20 @@ public class ChuyenDi {
     private int id;
     private String diemDi;
     private String diemDen;
-    private LocalDateTime ngayKhoiHanh;  
+//    private LocalDateTime ngayKhoiHanh;  
 
     public ChuyenDi() {
     }
 
-    public ChuyenDi(int id, String diemDi, String diemDen, LocalDateTime ngayKhoiHanh) {
+    public ChuyenDi(int id, String diemDi, String diemDen) {
         this.id = id;
         this.diemDi = diemDi;
         this.diemDen = diemDen;
-        this.ngayKhoiHanh = ngayKhoiHanh;
+//        this.ngayKhoiHanh = ngayKhoiHanh;
     }
+
+    
+    
 
     
     /**
@@ -72,15 +75,6 @@ public class ChuyenDi {
     /**
      * @return the ngayKhoiHanh
      */
-    public LocalDateTime getNgayKhoiHanh() {
-        return ngayKhoiHanh;
-    }
 
-    /**
-     * @param ngayKhoiHanh the ngayKhoiHanh to set
-     */
-    public void setNgayKhoiHanh(LocalDateTime ngayKhoiHanh) {
-        this.ngayKhoiHanh = ngayKhoiHanh;
-    }
     
 }

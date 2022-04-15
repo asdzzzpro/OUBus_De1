@@ -6,7 +6,9 @@ package com.mycompany.conf;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 
@@ -23,11 +25,12 @@ public class jdbcUtils {
             ex.printStackTrace();
         }
     }
-
+    
+    
     /**
      * @return the conn
      */
     public static Connection getConn() throws SQLException {
-        return DriverManager.getConnection("jdbc:mysql://localhost/banve","root", "123456");
+        return DriverManager.getConnection("jdbc:mysql://localhost/banve","root", "123456789");
     }
 }

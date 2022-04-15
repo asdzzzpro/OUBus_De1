@@ -7,4 +7,5 @@ module com.mycompany.fxticketsale {
 
     opens com.mycompany.fxticketsale to javafx.fxml;
     exports com.mycompany.fxticketsale;
+    exports com.mycompany.pojo;
 }
