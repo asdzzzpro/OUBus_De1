@@ -47,19 +47,19 @@ public class FXMLAdminController implements Initializable {
     
     
     private void loadColumns() {
-        TableColumn col1 = new TableColumn("ID");
-        col1.setCellValueFactory(new PropertyValueFactory("id"));
+        TableColumn col1 = new TableColumn("Diem Di");
+        col1.setCellValueFactory(new PropertyValueFactory("diemDi"));
         col1.setPrefWidth(200);
         
         TableColumn col2 = new TableColumn("diemDi");
-        col2.setCellValueFactory(new PropertyValueFactory("diemDi"));
+        col2.setCellValueFactory(new PropertyValueFactory("diemDen"));
         col2.setPrefWidth(200);
         
-        TableColumn col3 = new TableColumn("diemDen");
-        col3.setCellFactory(new PropertyValueFactory("diemDen"));
-        col3.setPrefWidth(200);
+//        TableColumn col3 = new TableColumn("diemDen");
+//        col3.setCellFactory(new PropertyValueFactory("diemDen"));
+//        col3.setPrefWidth(200);
         
-        this.tbAdmin.getColumns().addAll(col1, col2, col3);
+        this.tbAdmin.getColumns().addAll(col1, col2);
     }
     
     private void loadAdmin(String kw) throws SQLException{
