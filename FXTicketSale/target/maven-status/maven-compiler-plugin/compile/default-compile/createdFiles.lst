@@ -1,0 +1,4 @@
+module-info.class
+com\mycompany\fxticketsale\App.class
+com\mycompany\fxticketsale\PrimaryController.class
+com\mycompany\fxticketsale\SecondaryController.class
