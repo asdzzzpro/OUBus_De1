@@ -6,25 +6,25 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="textfield" stylesheets="@../../../styles/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.fxticketsale.FXMLDangNhapController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="textfield" stylesheets="@../../../styles/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.fxticketsale.FXMLDangNhap2Controller">
    <children>
       <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dangnhap" text="ĐĂNG NHẬP ADMIN" />
       <HBox prefHeight="26.0" prefWidth="600.0" styleClass="textfield">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TÀI KHOẢN" />
-            <TextField styleClass="textfield" text="nhập tài khoản..." />
+            <TextField fx:id="username" styleClass="textfield" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MẬT KHẨU" />
-            <TextField prefHeight="23.0" prefWidth="405.0" styleClass="textfield" text="nhập mật khẩu..." />
+            <TextField fx:id="password" prefHeight="23.0" prefWidth="405.0" styleClass="textfield" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" text="Đăng Nhập" />
-            <Button mnemonicParsing="false" text="Thoát" />
+            <Button mnemonicParsing="false" onAction="#handle" text="Đăng Nhập" />
+            <Button mnemonicParsing="false" onAction="#exit" text="Thoát" />
          </children>
       </HBox>
    </children>
