@@ -37,6 +37,7 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -63,6 +64,9 @@ public class FXMLBookController implements Initializable {
     private DatePicker txtNgayDat;
     @FXML
     private TableView<VeXe> tbVeXe;
+    @FXML
+    private Text txtTenKHText;
+    public static int id = 0;
     /**
      * Initializes the controller class.
      */
@@ -81,9 +85,38 @@ public class FXMLBookController implements Initializable {
                 Logger.getLogger(FXMLBookController.class.getName()).log(Level.SEVERE, null, ex);
             }            
         });
-  
+        this.tbVeXe.setRowFactory(et -> {
+            TableRow row = new TableRow();
+            row.setOnMouseClicked(r -> {
+                VeXe d = (VeXe) this.tbVeXe.getSelectionModel().getSelectedItem();
+                 this.txtTenVe.setText(String.valueOf(d.getTenVe()));
+                 this.txtMaChuyen.setText(String.valueOf(d.getMaChuyenXe()));
+                 this.txtMaGhe.setText(String.valueOf(d.getMaGhe()));
+                 this.txtMaNV.setText(String.valueOf(d.getMaNV()));
+                 this.txtTenKH.setText(String.valueOf(d.getTenKH()));
+                 this.txtSdt.setText(String.valueOf(d.getSdtKH()));
+                 id = d.getMaVe();
+            });
+            return row;
+        });
+//        this.tbVeXe.setRowFactory(et -> {
+//            TableRow row = new TableRow();
+//            row.setOnMouseClicked(r -> {
+//                VeXe d = (VeXe) this.tbVeXe.getSelectionModel().getSelectedItem();
+//                 this.txtTenKHText.setText(String.valueOf(d.getTenKH()));
+//                 
+//            });
+//        return row;
+//        });
     }    
     
+    public void xuatVe(ActionEvent event) throws IOException{
+        FXMLLoader fXMLLoader = new FXMLLoader(App.class.getResource("FXMLXuat.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(fXMLLoader.load());
+        stage.setScene(scene);
+        stage.show();
+    }
 
     
     public void themVe(ActionEvent event) throws SQLException{
@@ -102,7 +135,7 @@ public class FXMLBookController implements Initializable {
             ps.executeUpdate();
             conn.commit();
             loadData(sql);
-            this.loadColumns();
+//            this.loadColumns();
             VeXeService.getBox("Them ve thanh cong", Alert.AlertType.INFORMATION);
         }catch(SQLException e){
             this.loadData(null);
@@ -117,9 +150,10 @@ public class FXMLBookController implements Initializable {
         Scene scene = new Scene(fXMLLoader.load());
         stage.setScene(scene);
         stage.show();
-        
-        
+            
     }
+    
+    
     
     private void loadColumns(){
 //        tbVeXe.setEditable(true);
