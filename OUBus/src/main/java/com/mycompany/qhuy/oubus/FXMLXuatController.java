@@ -7,7 +7,7 @@ package com.mycompany.qhuy.oubus;
 
 import com.mycompany.conf.JdbcUtils;
 import com.mycompany.conf.Utils;
-import static com.mycompany.qhuy.oubus.FXMLBookController.id;
+import static com.mycompany.qhuy.oubus.FXMLChinhSuaController.id;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -29,7 +30,7 @@ import javafx.scene.control.Label;
  * @author Qhuy
  */
 public class FXMLXuatController implements Initializable {
-    @FXML
+@FXML
     private Label txtdiemDi;
     @FXML
     private Label txtdiemDen;
@@ -84,6 +85,19 @@ public class FXMLXuatController implements Initializable {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             LocalDateTime now = LocalDateTime.now();
             this.txtIn.setText(dtf.format(now));
+        }
+    }
+    public void banVe(ActionEvent event) throws SQLException{
+        try (Connection conn = JdbcUtils.getConn()){
+            PreparedStatement ps = conn.prepareStatement("UPDATE oubus.vexe SET tinhTrangVe='đã bán' WHERE maVe=?");
+            
+            ps.setInt(1, id);
+            
+            ps.executeUpdate();
+//            System.out.println("test");
+            Utils.showBox("Đã bán vé", Alert.AlertType.INFORMATION).show();
+        } catch (SQLException ex) {
+            Utils.showBox("Error", Alert.AlertType.WARNING).show();
         }
     }
 }

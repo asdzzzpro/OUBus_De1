@@ -62,6 +62,4 @@ public class VeXeService {
         conn.commit();
         
     }
-    
-    
 }

@@ -12,47 +12,19 @@ import java.sql.Date;
  * @author Qhuy
  */
 public class ChuyenXe {
-    private String maChuyenXeString;
-    private int maXe;
-    private Date ngayXuatPhat;
-    private int giaVe;
-    private String diemDi;
-    private String diemDen;
 
-    public ChuyenXe() {
-    }
-
-    public ChuyenXe(String maChuyenXeString, int maXe, Date ngayXuatPhat, int giaVe, String diemDi, String diemDen) {
-        this.maChuyenXeString = maChuyenXeString;
-        this.maXe = maXe;
-        this.ngayXuatPhat = ngayXuatPhat;
-        this.giaVe = giaVe;
-        this.diemDi = diemDi;
-        this.diemDen = diemDen;
-    }
-
-    public ChuyenXe(int maXe, String diemDi, String diemDen){
-        this.maXe = maXe;
-        this.diemDi = diemDi;
-        this.diemDen = diemDen;
-    }
-    
-    public ChuyenXe(String maChuyenXeString){
-        this.maChuyenXeString = maChuyenXeString;
-    }
-    
     /**
-     * @return the maChuyenXeString
+     * @return the maChuyenXe
      */
-    public String getMaChuyenXeString() {
-        return maChuyenXeString;
+    public int getMaChuyenXe() {
+        return maChuyenXe;
     }
 
     /**
-     * @param maChuyenXeString the maChuyenXeString to set
+     * @param maChuyenXe the maChuyenXe to set
      */
-    public void setMaChuyenXeString(String maChuyenXeString) {
-        this.maChuyenXeString = maChuyenXeString;
+    public void setMaChuyenXe(int maChuyenXe) {
+        this.maChuyenXe = maChuyenXe;
     }
 
     /**
@@ -72,14 +44,14 @@ public class ChuyenXe {
     /**
      * @return the ngayXuatPhat
      */
-    public Date getNgayXuatPhat() {
+    public String getNgayXuatPhat() {
         return ngayXuatPhat;
     }
 
     /**
      * @param ngayXuatPhat the ngayXuatPhat to set
      */
-    public void setNgayXuatPhat(Date ngayXuatPhat) {
+    public void setNgayXuatPhat(String ngayXuatPhat) {
         this.ngayXuatPhat = ngayXuatPhat;
     }
 
@@ -124,7 +96,24 @@ public class ChuyenXe {
     public void setDiemDen(String diemDen) {
         this.diemDen = diemDen;
     }
+     private int  maChuyenXe;
+    private int maXe;
+    private String ngayXuatPhat;
+    private int giaVe;
+    private String diemDi;
+    private String diemDen;
 
+    public ChuyenXe() {
+    }
+
+    public ChuyenXe(int maChuyenXe, int maXe, String ngayXuatPhat, int giaVe, String diemDi, String diemDen) {
+        this.maChuyenXe = maChuyenXe;
+        this.maXe = maXe;
+        this.ngayXuatPhat = ngayXuatPhat;
+        this.giaVe = giaVe;
+        this.diemDi = diemDi;
+        this.diemDen = diemDen;
+    }
     
     
 }

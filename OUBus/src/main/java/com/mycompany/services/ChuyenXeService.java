@@ -38,34 +38,23 @@ public class ChuyenXeService {
 //    }
     
     public List<ChuyenXe> getChuyenXe(String kw) throws SQLException {
-        ArrayList<ChuyenXe> cd = new ArrayList<>();
+        List<ChuyenXe> chuyendi = new ArrayList<>();
         
-        try (Connection conn = JdbcUtils.getConn()) {
-
-           PreparedStatement stm = conn.prepareStatement("SELECT * FROM chuyenxe WHERE diemDi like concat('%', ?, '%') OR diemDen like concat('%', ?, '%')");
-//           PreparedStatement stm2 = conn.prepareStatement("SELECT ");
-           
-           if (kw == null)
-               kw = "";
-           stm.setString(1, kw);
-           stm.setString(2, kw);
+       try (Connection conn = JdbcUtils.getConn()){
+           String sql = " SELECT * FROM chuyenxe";
+           if (kw != null && !kw.isEmpty())
+               sql += " WHERE diemDi like concat('%', ?, '%')";
+           PreparedStatement stm = conn.prepareStatement(sql);
+           if(kw != null && !kw.isEmpty())
+               stm.setString(1, kw);
            ResultSet rs = stm.executeQuery();
-                                        
-            while (rs.next()) {
-//                System.out.println(rs.getString(5));
-//                System.out.println(strn); 
-//                ChuyenXe c = new ChuyenXe(rs.getString("maChuyenXe"), rs.getInt("maXe"), rs.getDate("ngayXuatPhat"), rs.getint("giaVe"), rs.getString("diemDi"), rs.getString("diemDen"));
-//                ChuyenXe c = new ChuyenXe(rs.getInt(1),rs.getString(5), rs.getString(6));
-                ChuyenXe c = new ChuyenXe(rs.getString(1), rs.getInt(2), rs.getDate(3), rs.getInt(4), rs.getString(5), rs.getString(6));
-                
-//                ChuyenXe d = new ChuyenXe(rs.getInt("id"), rs.getString("diemDi"), rs.getString("diemDen"));
-//                System.out.println("111");
-                cd.add(c);
-                
-            }
-        }
-        
-        return cd;
+           while (rs.next()){
+               ChuyenXe c = new ChuyenXe(rs.getInt("maChuyenXe"),rs.getInt("maXe"), rs.getString("ngayXuatPhat"),rs.getInt("giaVe"), rs.getString("diemDi"),rs.getString("diemDen"));
+               chuyendi.add(c);
+           }        
+       }
+       
+        return chuyendi;
         
     }
     
