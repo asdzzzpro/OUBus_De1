@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -66,7 +65,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <DatePicker fx:id="ngayXuatPhat" />
+            <TextField fx:id="ngayXuatPhat" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" stylesheets="@../../../styles/style.css">

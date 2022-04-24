@@ -43,24 +43,20 @@ public class ChuyenDiService {
     }
 
      public List<ChuyenXe> getChuyenDis(String kw) throws SQLException{
-       List<ChuyenXe> chuyendis = new ArrayList<>();
+         try(Connection conn = jdbcUtils.getConn()){
+         PreparedStatement stm = conn.prepareStatement("SELECT  * FROM chuyenxe WHERE maChuyenXe like concat('%', ? , '%')");
+         if(kw == null)
+             kw = "";
+         stm.setString(1, kw);
+         ResultSet rs = stm.executeQuery();
+         List<ChuyenXe> chuyenxe = new ArrayList<>();
+         while (rs.next()){
+             ChuyenXe k = new ChuyenXe(rs.getInt(1),rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6));
+             chuyenxe.add(k);
+         }
+          return chuyenxe ;
+        }
         
-       try (Connection conn = jdbcUtils.getConn()){
-           String sql = " SELECT * FROM chuyenxe";
-           if (kw != null && !kw.isEmpty())
-               sql += " WHERE content like concat('%', ?, '%')";
-           PreparedStatement stm = conn.prepareStatement(sql);
-           if(kw != null && !kw.isEmpty())
-               stm.setString(1, kw);
-           ResultSet rs = stm.executeQuery();
-           while (rs.next()){
-               ChuyenXe c = new ChuyenXe(rs.getInt("maChuyenXe"),rs.getInt("maXe"), rs.getString("ngayXuatPhat"),rs.getInt("giaVe"), rs.getString("diemDi"),rs.getString("diemDen"));
-               chuyendis.add(c);
-           }        
-       }
-       
-       
-       return chuyendis;
     }
      
      
@@ -86,23 +82,23 @@ public class ChuyenDiService {
      }
      
      
-     public static List<ChuyenXe> timKiemChuyenDi(String maChuyenXe) throws SQLException{
-         
-         String sql ="SELECT * FROM  chuyenxe WHERE maChuyenXe=?";
-         
-         Connection conn = jdbcUtils.getConn();
-         PreparedStatement stm = conn.prepareStatement(sql);
-         stm.setString(1, maChuyenXe);
-         
-         ResultSet rs = stm.executeQuery();
-         
-         List<ChuyenXe> chuyenxe = new ArrayList<>();
-          while (rs.next()){
-               ChuyenXe c = new ChuyenXe(rs.getInt("maChuyenXe"),rs.getInt("maXe"), rs.getString("ngayXuatPhat"),rs.getInt("giaVe"), rs.getString("diemDi"),rs.getString("diemDen"));
-               chuyenxe.add(c);
-          }
-         return chuyenxe;
-        }
+//     public static List<ChuyenXe> timKiemChuyenDi(String maChuyenXe) throws SQLException{
+//         
+//         String sql ="SELECT * FROM  chuyenxe WHERE maChuyenXe=?";
+//         
+//         Connection conn = jdbcUtils.getConn();
+//         PreparedStatement stm = conn.prepareStatement(sql);
+//         stm.setString(1, maChuyenXe);
+//         
+//         ResultSet rs = stm.executeQuery();
+//         
+//         List<ChuyenXe> chuyenxe = new ArrayList<>();
+//          while (rs.next()){
+//               ChuyenXe c = new ChuyenXe(rs.getInt("maChuyenXe"),rs.getInt("maXe"), rs.getString("ngayXuatPhat"),rs.getInt("giaVe"), rs.getString("diemDi"),rs.getString("diemDen"));
+//               chuyenxe.add(c);
+//          }
+//         return chuyenxe;
+//        }
      
      
      

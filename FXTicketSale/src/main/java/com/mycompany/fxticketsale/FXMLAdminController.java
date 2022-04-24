@@ -8,11 +8,13 @@ import com.mycompany.conf.Utils;
 import com.mycompany.conf.jdbcUtils;
 import com.mycompany.pojo.ChuyenXe;
 import com.mycompany.services.ChuyenDiService;
+import com.mycompany.services.UpdateChuyenXeService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -28,8 +30,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -42,12 +46,20 @@ import javafx.stage.Stage;
  */
 public class FXMLAdminController implements Initializable {
     @FXML private TableView<ChuyenXe> tbcacChuyenDi;
-    @FXML private TableColumn<ChuyenXe, Integer> idColumn;
-    @FXML private TableColumn<ChuyenXe, String> diemDiColumn;
-    @FXML private TableColumn<ChuyenXe, String> diemDenColumn;
-    @FXML private TextField keywords;
+    @FXML private TextField maChuyenXe;
+    @FXML private TextField maXe;
+    @FXML private TextField ngayXuatPhat;
+    @FXML private TextField giaVe;
+    @FXML private TextField diemDi;
+    @FXML private TextField diemDen;
+    @FXML private Button updatebtn;
+    @FXML private TextField timkiembtn;
+//    @FXML private TableColumn<ChuyenXe, Integer> idColumn;
+//    @FXML private TableColumn<ChuyenXe, String> diemDiColumn;
+//    @FXML private TableColumn<ChuyenXe, String> diemDenColumn;
+//    @FXML private TextField keywords;
    
-    ObservableList<ChuyenXe> oblist = FXCollections.observableArrayList();
+//    ObservableList<ChuyenXe> oblist = FXCollections.observableArrayList();
     
     
      @FXML
@@ -69,7 +81,12 @@ public class FXMLAdminController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
              
         try {
-            this.loadTableData(null);
+            this.loadTableData();
+            this.timkiem(null);
+            timkiembtn.textProperty().addListener((evt) ->{
+                this.timkiem(timkiembtn.getText());
+            });
+            
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
@@ -79,7 +96,40 @@ public class FXMLAdminController implements Initializable {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-    }       
+        this.updatebtn.setVisible(false);
+        this.tbcacChuyenDi.setRowFactory(et -> {
+                TableRow row = new TableRow();
+                row.setOnMouseClicked(r ->{
+                    this.updatebtn.setVisible(true);
+                    ChuyenXe d = (ChuyenXe)this.tbcacChuyenDi.getSelectionModel().getSelectedItem();
+                    this.maChuyenXe.setText(String.valueOf(d.getMaChuyenXe()));
+                    this.maXe.setText(String.valueOf(d.getMaXe()));
+                    this.giaVe.setText(String.valueOf(d.getGiaVe()));
+                    this.diemDi.setText(String.valueOf(d.getDiemDi()));
+                    this.diemDen.setText(String.valueOf(d.getDiemDen()));
+                    this.ngayXuatPhat.setText(String.valueOf(d.getNgayXuatPhat()));
+              
+                });
+            return row;    
+            });
+}
+    
+    public void updateChuyenXeHandler(ActionEvent event) throws SQLException{
+            ChuyenXe c = new ChuyenXe(Integer.parseInt(this.maChuyenXe.getText()),Integer.parseInt(this.maXe.getText()),this.ngayXuatPhat.getText(),Integer.parseInt(this.giaVe.getText()), this.diemDi.getText(),this.diemDen.getText());
+             UpdateChuyenXeService s = new UpdateChuyenXeService();
+             s.capNhatChuyenDi(c);
+            try {
+            s.capNhatChuyenDi(c);
+            Utils.getBox("Cập nhật thành công!", Alert.AlertType.INFORMATION).show();
+            this.loadTableData();
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+            Utils.getBox("Cập nhật thất bại!", Alert.AlertType.WARNING).show();
+        }    
+             
+    }
+    
+    
 
     private void loadTableView() throws SQLException{
         
@@ -141,37 +191,27 @@ public class FXMLAdminController implements Initializable {
                 return cell;
             });
             
-                
+            this.loadTableData();
             this.tbcacChuyenDi.getColumns().addAll(colMaChuyenXe,colMaXe,colNgayXuatPhat, colGiaVe, colDiemDi, colDiemDen, coldelete); 
            
          }   
     
-    private void loadTableData(String kw) throws SQLException{
+    private void loadTableData() throws SQLException{
         ChuyenDiService s = new ChuyenDiService();
-        this.tbcacChuyenDi.setItems(FXCollections.observableArrayList(s.getChuyenDis(kw) ));
+        this.tbcacChuyenDi.setItems(FXCollections.observableList(s.getCacChuyenDi()));
     }
     
-//    public void deleteChuyenDi(ActionEvent event){
-//            ChuyenDiService s = new ChuyenDiService();
-//             this.xoa.setOnAction((evt) -> {
-//             TableCell c = (TableCell)((Button)evt.getSource()).getParent();
-//             ChuyenDi q = (ChuyenDi) c.getTableRow().getItem();
-//              try {
-//                    if (s.deleteChuyenDi(Integer.toString(q.getId())) == true) {
-//                        Utils.getBox("Delete successful!", Alert.AlertType.INFORMATION).show();
-//                        this.loadTableData(null);
-//                    } else {
-//                        Utils.getBox("Delete failed!", Alert.AlertType.ERROR).show();
-//                    }
-//                } catch (SQLException ex) {
-//                    Logger.getLogger(FXMLAdminController.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//         });
-
-       
-     
-        
-        
-//    }
+    private void timkiem(String kw){
+    ChuyenDiService s = new ChuyenDiService();
+        try {
+            this.tbcacChuyenDi.setItems(FXCollections.observableArrayList(s.getChuyenDis(kw)));
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLAdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+     public void  reload(ActionEvent event) throws SQLException{
+         this.loadTableData();
+     }
   
 }
