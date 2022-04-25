@@ -15,7 +15,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -86,15 +88,28 @@ public class FXMLBookController implements Initializable {
                 Logger.getLogger(FXMLBookController.class.getName()).log(Level.SEVERE, null, ex);
             }            
         });
-  
+        
     }    
     
 
     
     public void themVe(ActionEvent event) throws SQLException{
-        
+//        Connection conn = JdbcUtils.getConn();
+//        PreparedStatement ps1 = conn.prepareStatement("Select * from ghe");        
+//        ResultSet rs = ps1.executeQuery();
+//        while (rs.next()) {            
+//            if(this.txtMaGhe.getText().equals(rs.getString("maGhe"))){
+//                Utils.showBox("Ghế đã đặt!", Alert.AlertType.WARNING).show();
+//            }else{
+//                this.test();
+////                ps1.setInt(0, 0);
+//                Statement stm = conn.createStatement();
+//                stm.executeUpdate("update ghe set tinhTrangGhe=0 where maGhe= '" +txtMaGhe.getText()+"'");
+//            }
+//        }
         String sql = "INSERT INTO vexe (tenVe,maChuyenXe,maGhe,maNV,tenKH,sdtKH,ngayDatVe) values(?,?,?,?,?,?,?)";
-        try(Connection conn = JdbcUtils.getConn()){
+        Connection conn = JdbcUtils.getConn();
+        try{
             conn.setAutoCommit(false);
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, txtTenVe.getText());
@@ -110,15 +125,18 @@ public class FXMLBookController implements Initializable {
         }catch(Exception ex){
             Utils.showBox("Khong the them ve moi", Alert.AlertType.WARNING).show();
         }
+        
+        
+        
     }
     
-    public void suaVe(ActionEvent event) throws IOException{
+    
+    public void suaVe(ActionEvent event) throws IOException, SQLException{
         FXMLLoader fXMLLoader = new FXMLLoader(App.class.getResource("FXMLChinhSua.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(fXMLLoader.load());
         stage.setScene(scene);
         stage.show();
-        
         
     }
     private void loadTableView() throws SQLException{

@@ -39,13 +39,13 @@ public class FXMLDangNhapController implements Initializable {
     
     @FXML
     public void handle (ActionEvent event) throws SQLException {
-        String us = username.getText(); // lấy giá trị trong text field
-        String pw = password.getText();
+        String us = this.username.getText(); // lấy giá trị trong text field
+        String pw = this.password.getText();
         DangNhapNhanVienService d = new DangNhapNhanVienService();
         int kq = d.dangNhapNhanVien(us, pw); // truyền 2 tham số
         if(kq!=1)
             Utils.showBox("fail!", Alert.AlertType.ERROR).show(); //hiện ra box thông báo "Đăng nhập k thành công"
-        if(kq ==1)
+        if(kq==1)
              try {
                 
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLBook.fxml"));

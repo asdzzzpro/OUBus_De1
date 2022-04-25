@@ -27,7 +27,7 @@ public class DangNhapNhanVienService {
             PreparedStatement stm = conn.prepareStatement("SELECT * FROM nhanvien");
             ResultSet rs = stm.executeQuery();
             while (rs.next()) { //
-               if(us.equals(rs.getString("username")) && rs.getString("password").equals(pw))
+               if(rs.getString("username").equals(us) && rs.getString("password").equals(pw))
                    
                {
                    Utils.showBox("successful!", Alert.AlertType.INFORMATION).show(); 
@@ -40,6 +40,7 @@ public class DangNhapNhanVienService {
                }
                
                else 
+                   Utils.showBox("K đúng tài khoản hoặc mật khẩu", Alert.AlertType.WARNING).show();
                    return -1;
                
             }   

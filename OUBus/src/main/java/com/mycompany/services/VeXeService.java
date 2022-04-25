@@ -57,6 +57,7 @@ public class VeXeService {
         Connection conn = JdbcUtils.getConn();
         conn.setAutoCommit(false);
         PreparedStatement ps = conn.prepareStatement("DELETE FROM vexe WHERE maVe = ?");
+//        PreparedStatement ps1 = conn.prepareStatement()
         ps.setInt(1, maVe);
         ps.execute();
         conn.commit();

@@ -36,6 +36,10 @@ Text.welcome1{
     -fx-pref-width:0;
 }
 
+/*FXMLDangNhap {
+    fx-background-color: lightblue
+}*/
+
 .mainFxmlClass {
 
 }

@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.qhuy.oubus.FXMLDangNhapController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="352.0" prefWidth="575.0" style="-fx-background-color: lightblue;" stylesheets="@../../../../styles/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.qhuy.oubus.FXMLDangNhapController">
    <children>
       <Label layoutX="61.0" layoutY="106.0" prefHeight="27.0" prefWidth="92.0" text="Tài Khoản:">
          <font>
@@ -31,7 +30,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="347.0" layoutY="237.0" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" prefWidth="146.0" text="Thoát">
+      <Button layoutX="319.0" layoutY="237.0" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" prefWidth="146.0" text="Thoát">
          <font>
             <Font size="18.0" />
          </font>

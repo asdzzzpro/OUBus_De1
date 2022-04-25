@@ -37,6 +37,8 @@ public class FXMLXuatController implements Initializable {
     @FXML
     private Label txtNgayDat;
     @FXML
+    private Label txtNgayKhoiHanh;
+    @FXML
     private Label txtGhe;
     @FXML
     private Label txtGiaVe;
@@ -64,7 +66,7 @@ public class FXMLXuatController implements Initializable {
     }    
     public void xuatVe(int kw) throws SQLException{
         Connection conn = JdbcUtils.getConn();
-        String sql2 = "SELECT diemDi,diemDen,ngayDatVe,tenGhe,giaVe,tenKH,sdtKH,tenNV from oubus.vexe "
+        String sql2 = "SELECT diemDi,diemDen,ngayDatVe,ngayXuatPhat,tenGhe,giaVe,tenKH,sdtKH,tenNV from oubus.vexe "
                 + "join chuyenxe on vexe.maChuyenXe=chuyenxe.maChuyenXe\n" +
                     "join nhanvien on vexe.maNV=nhanvien.maNV\n" +
                     "join ghe on vexe.maGhe=ghe.maGhe where maVe=?";
@@ -77,6 +79,7 @@ public class FXMLXuatController implements Initializable {
             this.txtdiemDi.setText(rs.getString("diemDi"));
             this.txtdiemDen.setText(rs.getString("diemDen"));
             this.txtNgayDat.setText(rs.getString("ngayDatVe"));
+            this.txtNgayKhoiHanh.setText(rs.getString("ngayXuatPhat"));
             this.txtGhe.setText(rs.getString("tenGhe"));
             this.txtGiaVe.setText(rs.getString("giaVe"));
             this.txtHoTen.setText(rs.getString("tenKH"));
