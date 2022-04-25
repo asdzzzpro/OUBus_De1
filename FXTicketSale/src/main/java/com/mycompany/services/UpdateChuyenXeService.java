@@ -4,7 +4,7 @@
  */
 package com.mycompany.services;
 
-import com.mycompany.conf.jdbcUtils;
+import com.mycompany.conf.JdbcUtils;
 import com.mycompany.pojo.ChuyenXe;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +16,7 @@ import java.sql.SQLException;
  */
 public class UpdateChuyenXeService {
      public void capNhatChuyenDi(ChuyenXe d ) throws SQLException{
-          try(Connection conn = jdbcUtils.getConn()){
+          try(Connection conn = JdbcUtils.getConn()){
             conn.setAutoCommit(false);
             PreparedStatement stm = conn.prepareStatement(" UPDATE chuyenxe SET maXe = ?, ngayXuatPhat = ? , giaVe = ? , diemDi = ?, diemDen = ? WHERE maChuyenXe = ?");
             stm.setInt(1, d.getMaXe());

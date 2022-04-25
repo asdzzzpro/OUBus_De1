@@ -4,7 +4,7 @@
  */
 package com.mycompany.services;
 
-import com.mycompany.conf.jdbcUtils;
+import com.mycompany.conf.JdbcUtils;
 import com.mycompany.pojo.ChuyenXe;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +23,7 @@ import javafx.scene.control.Alert;
 public class ChuyenDiService {
     public List<ChuyenXe> getCacChuyenDi() throws SQLException{
         List<ChuyenXe> results = new ArrayList<>();
-        try(Connection conn = jdbcUtils.getConn()){
+        try(Connection conn = JdbcUtils.getConn()){
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM  chuyenxe");
          
@@ -43,7 +43,7 @@ public class ChuyenDiService {
     }
 
      public List<ChuyenXe> getChuyenDis(String kw) throws SQLException{
-         try(Connection conn = jdbcUtils.getConn()){
+         try(Connection conn = JdbcUtils.getConn()){
          PreparedStatement stm = conn.prepareStatement("SELECT  * FROM chuyenxe WHERE maChuyenXe like concat('%', ? , '%')");
          if(kw == null)
              kw = "";
@@ -63,7 +63,7 @@ public class ChuyenDiService {
      
      public static void deleteChuyenDi(int MaChuyenXe) throws SQLException {
        String sql = "DELETE FROM chuyenxe WHERE maChuyenXe=?";
-       Connection conn = jdbcUtils.getConn();
+       Connection conn = JdbcUtils.getConn();
        conn.setAutoCommit(false);
        
        PreparedStatement stm = conn.prepareStatement(sql);
@@ -86,7 +86,7 @@ public class ChuyenDiService {
 //         
 //         String sql ="SELECT * FROM  chuyenxe WHERE maChuyenXe=?";
 //         
-//         Connection conn = jdbcUtils.getConn();
+//         Connection conn = JdbcUtils.getConn();
 //         PreparedStatement stm = conn.prepareStatement(sql);
 //         stm.setString(1, maChuyenXe);
 //         
@@ -107,7 +107,7 @@ public class ChuyenDiService {
          if(!keyword.isEmpty())
              sql+= "WHERE diemDi like ?";
                      
-         Connection conn = jdbcUtils.getConn();
+         Connection conn = JdbcUtils.getConn();
          PreparedStatement stm = conn.prepareStatement(sql);
          if(!keyword.isEmpty())
              stm.setString(1, String.format("%%%S%%", keyword));

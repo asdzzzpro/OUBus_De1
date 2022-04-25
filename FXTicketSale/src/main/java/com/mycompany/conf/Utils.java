@@ -16,5 +16,9 @@ public class Utils {
         alert.setContentText(content);
         return alert;
     }
-    
+    public static Alert showBox(String msg, Alert.AlertType type){
+        Alert a = new Alert(type);
+        a.setContentText(msg);
+        return a;
+    }
 }

@@ -4,7 +4,7 @@
  */
 package com.mycompany.services;
 
-import com.mycompany.conf.jdbcUtils;
+import com.mycompany.conf.JdbcUtils;
 import com.mycompany.pojo.ChuyenXe;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +16,7 @@ import java.sql.SQLException;
  */
 public class ThemChuyenDiService {
     public void themChuyenDi(ChuyenXe q) throws SQLException{
-        try(Connection conn = jdbcUtils.getConn()){
+        try(Connection conn = JdbcUtils.getConn()){
             conn.setAutoCommit(false);
             PreparedStatement stm1 = conn.prepareStatement("INSERT INTO chuyenxe(maChuyenXe,maXe,ngayXuatPhat,giaVe,diemDi,diemDen) VALUES(?,?,?,?,?,?)");
             stm1.setInt(1,q.getMaChuyenXe());

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.qhuy.oubus;
+package com.mycompany.fxticketsale;
 
 import com.mycompany.conf.JdbcUtils;
 import com.mycompany.conf.Utils;
-import static com.mycompany.qhuy.oubus.FXMLChinhSuaController.id;
+import static com.mycompany.fxticketsale.FXMLChinhSuaController.id;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

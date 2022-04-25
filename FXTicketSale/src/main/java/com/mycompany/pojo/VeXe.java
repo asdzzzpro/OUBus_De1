@@ -11,23 +11,39 @@ package com.mycompany.pojo;
  */
 public class VeXe {
     private int maVe;
-    private String tenXe;
+    private String tenVe;
     private String maChuyenXe;
     private int maGhe;
-    private int maKH;
+    private String tenKH;
+    private String sdtKH;
+    private String ngayDatVe;
     private int maNV;
 
     public VeXe() {
     }
 
-    public VeXe(int maVe, String tenXe, String maChuyenXe, int maGhe, int maKH, int maNV) {
-        this.maVe = maVe;
-        this.tenXe = tenXe;
+    public VeXe(String tenVe, String maChuyenXe, int maGhe, String tenKH, String sdtKH, String ngayDatVe, int maNV) {
+        this.tenVe = tenVe;
         this.maChuyenXe = maChuyenXe;
         this.maGhe = maGhe;
-        this.maKH = maKH;
+        this.tenKH = tenKH;
+        this.sdtKH = sdtKH;
+        this.ngayDatVe = ngayDatVe;
         this.maNV = maNV;
     }
+
+    public VeXe(int maVe, String tenVe, String maChuyenXe, int maGhe, String tenKH, String sdtKH, String ngayDatVe, int maNV) {
+        this.maVe = maVe;
+        this.tenVe = tenVe;
+        this.maChuyenXe = maChuyenXe;
+        this.maGhe = maGhe;
+        this.tenKH = tenKH;
+        this.sdtKH = sdtKH;
+        this.ngayDatVe = ngayDatVe;
+        this.maNV = maNV;
+    }
+
+    
     
     
 
@@ -46,17 +62,17 @@ public class VeXe {
     }
 
     /**
-     * @return the tenXe
+     * @return the tenVe
      */
-    public String getTenXe() {
-        return tenXe;
+    public String getTenVe() {
+        return tenVe;
     }
 
     /**
-     * @param tenXe the tenXe to set
+     * @param tenVe the tenVe to set
      */
-    public void setTenXe(String tenXe) {
-        this.tenXe = tenXe;
+    public void setTenVe(String tenVe) {
+        this.tenVe = tenVe;
     }
 
     /**
@@ -88,17 +104,45 @@ public class VeXe {
     }
 
     /**
-     * @return the maKH
+     * @return the tenKH
      */
-    public int getMaKH() {
-        return maKH;
+    public String getTenKH() {
+        return tenKH;
     }
 
     /**
-     * @param maKH the maKH to set
+     * @param tenKH the tenKH to set
      */
-    public void setMaKH(int maKH) {
-        this.maKH = maKH;
+    public void setTenKH(String tenKH) {
+        this.tenKH = tenKH;
+    }
+
+    /**
+     * @return the sdtKH
+     */
+    public String getSdtKH() {
+        return sdtKH;
+    }
+
+    /**
+     * @param sdtKH the sdtKH to set
+     */
+    public void setSdtKH(String sdtKH) {
+        this.sdtKH = sdtKH;
+    }
+
+    /**
+     * @return the ngayDatVe
+     */
+    public String getNgayDatVe() {
+        return ngayDatVe;
+    }
+
+    /**
+     * @param ngayDatVe the ngayDatVe to set
+     */
+    public void setNgayDatVe(String ngayDatVe) {
+        this.ngayDatVe = ngayDatVe;
     }
 
     /**
@@ -114,6 +158,5 @@ public class VeXe {
     public void setMaNV(int maNV) {
         this.maNV = maNV;
     }
-    
-    
+
 }

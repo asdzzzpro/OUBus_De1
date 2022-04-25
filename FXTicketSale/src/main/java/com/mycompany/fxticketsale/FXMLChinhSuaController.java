@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.qhuy.oubus;
+package com.mycompany.fxticketsale;
 
 import com.mycompany.conf.JdbcUtils;
 import com.mycompany.pojo.VeXe;

@@ -1,4 +1,0 @@
---patch-module
-com.mycompany.fxticketsale=_
---add-reads
-com.mycompany.fxticketsale=ALL-UNNAMED

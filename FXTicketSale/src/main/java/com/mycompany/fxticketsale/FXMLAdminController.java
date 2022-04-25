@@ -5,7 +5,7 @@
 package com.mycompany.fxticketsale;
 
 import com.mycompany.conf.Utils;
-import com.mycompany.conf.jdbcUtils;
+import com.mycompany.conf.JdbcUtils;
 import com.mycompany.pojo.ChuyenXe;
 import com.mycompany.services.ChuyenDiService;
 import com.mycompany.services.UpdateChuyenXeService;

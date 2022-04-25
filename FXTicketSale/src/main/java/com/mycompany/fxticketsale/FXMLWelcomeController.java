@@ -38,7 +38,7 @@ public class FXMLWelcomeController implements Initializable {
     }
     
     
-     @FXML
+    @FXML
     void dangnhapnhanvien(ActionEvent event){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDangNhap.fxml"));

@@ -81,6 +81,4 @@ public class Ghe {
     public void setMaXe(int maXe) {
         this.maXe = maXe;
     }
-    
-    
 }

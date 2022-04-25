@@ -40,7 +40,7 @@ public class FXMLDangNhap2Controller implements Initializable {
         DangNhapAdminService d = new DangNhapAdminService();
         int kq = d.dangNhapAdmin(us, pw); // truyền 2 tham số
         if(kq!=1)
-            Utils.getBox("fail!", Alert.AlertType.ERROR).show(); //hiện ra box thông báo "Đăng nhập k thành công"
+            Utils.showBox("fail!", Alert.AlertType.ERROR).show(); //hiện ra box thông báo "Đăng nhập k thành công"
         if(kq ==1)
              try {
                 

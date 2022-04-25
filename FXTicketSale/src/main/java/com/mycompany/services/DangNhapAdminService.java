@@ -5,7 +5,7 @@
 package com.mycompany.services;
 
 import com.mycompany.conf.Utils;
-import com.mycompany.conf.jdbcUtils;
+import com.mycompany.conf.JdbcUtils;
 import com.mycompany.fxticketsale.FXMLWelcomeController;
 import java.io.IOException;
 import java.sql.Connection;
@@ -27,7 +27,7 @@ import javax.xml.transform.OutputKeys;
  */
 public class DangNhapAdminService {
     public Integer dangNhapAdmin(String us, String pw) throws SQLException {
-         try (Connection conn = jdbcUtils.getConn()) { 
+         try (Connection conn = JdbcUtils.getConn()) { 
             PreparedStatement stm = conn.prepareStatement("SELECT * FROM admin");
             ResultSet rs = stm.executeQuery();
             while (rs.next()) { //

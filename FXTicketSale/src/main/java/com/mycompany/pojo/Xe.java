@@ -82,6 +82,4 @@ public class Xe {
     public void setSoGhe(int soGhe) {
         this.soGhe = soGhe;
     }
-    
-    
 }

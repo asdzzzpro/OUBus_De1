@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.qhuy.oubus;
+package com.mycompany.fxticketsale;
 
 import com.mycompany.conf.JdbcUtils;
 import com.mycompany.conf.Utils;
 import com.mycompany.pojo.ChuyenXe;
 import com.mycompany.pojo.VeXe;
-import com.mycompany.services.ChuyenXeService;
+import com.mycompany.services.ChuyenDiService;
 import com.mycompany.services.VeXeService;
 import java.io.IOException;
 import java.net.URL;
@@ -163,7 +163,7 @@ public class FXMLBookController implements Initializable {
          }   
     
     private void loadTableData(String kw) throws SQLException{
-        ChuyenXeService s = new ChuyenXeService();
+        ChuyenDiService s = new ChuyenDiService();
         this.tbcacChuyenDi.setItems(FXCollections.observableArrayList(s.getChuyenXe(kw) ));
     }
 //    private void loadColumns(){

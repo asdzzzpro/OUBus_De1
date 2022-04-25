@@ -98,6 +98,4 @@ public class NhanVien {
     public void setUserRole(Enum userRole) {
         this.userRole = userRole;
     }
-    
-    
 }

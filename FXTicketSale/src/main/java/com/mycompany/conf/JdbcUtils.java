@@ -1,20 +1,17 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.mycompany.conf;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
-
 
 /**
  *
- * @author XGEAR
+ * @author Qhuy
  */
 public class JdbcUtils {
     private static Connection conn;  
@@ -25,8 +22,7 @@ public class JdbcUtils {
             ex.printStackTrace();
         }
     }
-    
-    
+
     /**
      * @return the conn
      */
